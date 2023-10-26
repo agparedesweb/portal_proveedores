@@ -1,0 +1,74 @@
+<?php
+session_start();
+$errors=array();
+$errors[0]="";
+$errors[1]="";
+$errors[2]="";
+$errors[3]="";
+$errors[4]="";
+$errors[5]="";
+$errors[6]="";
+$errors[7]="";
+$errors[8]="";
+$errors[9]="";
+$validos=array();
+$validos[0]="";
+$validos[1]="";
+$validos[2]="";
+$validos[3]="";
+$validos[4]="";
+$validos[5]="";
+$validos[6]="";
+$validos[7]="";
+$validos[8]="";
+$validos[9]="";
+
+//palomeamos los xml validos
+if(isset($_SESSION['validos']))
+{
+	$xml_validos=$_SESSION['validos'];
+	for($i=0;$i<=count($xml_validos)-1;$i++) 
+	{
+		$valor=$xml_validos[$i];
+		$validos[$valor]="<div class='tool_tip'><ul class='tt-wrapper'><li><a class='tt-sample' href='#''><img src='img/ok.png' alt=''/><span>XML V&aacute;lido</span></a></li></ul></div>";
+	}
+	unset($_SESSION['validos']);	
+}
+//comprobamos que no existan UUID duplicados, esto con el fin de evitar una doble validacion del XML
+if(isset($_SESSION['e']))
+{
+	$error_uuid=$_SESSION['e'];
+	for($i=0;$i<=count($error_uuid)-1;$i++) 
+	{
+		$valor=$error_uuid[$i];
+		$errors[$valor]="<div class='tool_tip'><ul class='tt-wrapper'><li><a class='tt-sample' href='#''><img src='img/warning.png' alt=''/><span>UUID ya existente</span></a></li></ul></div>";
+	}
+	unset($_SESSION['e']);	
+}
+//comprobamos que existan errores de direccion de receptor del XML
+if(isset($_SESSION['e_dir']))
+{
+	$error_dir=$_SESSION['e_dir'];
+	for($i=0;$i<=count($error_dir)-1;$i++) 
+	{
+		$valor=$error_dir[$i];
+		$errors[$valor]="<div class='tool_tip'><ul class='tt-wrapper'><li><a class='tt-sample' href='#''><img src='img/warning.png' alt=''/><span>Verifica nuestros datos de recepci&oacute;n fiscales del archivo</span></a></li></ul></div>";
+	}
+	unset($_SESSION['e_dir']);
+}
+//Comprobamos que existan errores del XML validado ante el SAT
+if(isset($_SESSION['e_xml']))
+{
+	$error_xml=$_SESSION['e_xml'];
+	$posicion=$_SESSION['posicion'];
+	for($i=0;$i<=count($error_xml)-1;$i++) 
+	{
+		$pos=$posicion[$i];
+		$valor=$error_xml[$i];
+		$errors[$pos]="<div class='tool_tip'><ul class='tt-wrapper'><li><a class='tt-sample' href='#''><img src='img/warning.png' alt=''/><span>".$valor."</span></a></li></ul></div>";
+		
+	}
+	unset($_SESSION['e_xml']);
+}
+
+?>

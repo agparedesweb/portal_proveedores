@@ -1,0 +1,70 @@
+/* start tooltip */
+.tool_tip1 {
+	margin: 4% 0;
+}
+.tt-wrapper{
+	padding:4% 0 10% 0;	
+}
+.tt-wrapper li:first-child{
+	margin-left: 0;
+}
+.tt-wrapper li{
+}
+.tt-wrapper li a{
+	display: block;
+	outline: none;
+	position: relative;
+	height: 60px;
+}
+.tt-wrapper li .tt-sample{
+    background-position: 0px 0px;
+}
+.tt-wrapper  a span{
+	text-transform:uppercase;
+	width: 130px;
+	height: auto;
+	line-height: 20px;
+	padding: 10px;
+	left: 50%;
+	margin-left: -64px;
+	font-weight: normal;	
+	font-size: 14px;
+	color: #ffffff;
+	text-align: center;
+	border: 4px solid #000;
+	background:#000000;
+	text-indent: 0px;
+	border-radius: 5px;
+	position: absolute;
+	pointer-events: none;
+	bottom: 100px;
+	opacity: 0;
+	box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+.tt-wrapper a span:before,
+.tt-wrapper a span:after{
+	content: '';
+	position: absolute;
+	bottom: -15px;
+	left: 50%;
+	margin-left: -9px;
+	width: 0;
+	height: 0;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-top: 10px solid rgba(0,0,0,0.1);
+}
+.tt-wrapper a span:after{
+	bottom: -14px;
+	margin-left: -10px;
+	border-top: 10px solid #000;
+}
+.tt-wrapper  a:hover span{
+	opacity: 0.9;
+	bottom: 70px;
+}
